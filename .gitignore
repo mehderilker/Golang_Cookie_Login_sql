@@ -6,7 +6,10 @@ vendor/
 src/golang.org
 !*.go
 !.gitignore
-
+# Untracked files:
+    [...]
+          public/
+          [...]
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -14,8 +17,10 @@ src/golang.org
 *.so
 *.dylib
 
- # ignore generated html files,
+# ignore generated html files,
     *.html
+    *.css
+    *.js
 
 # Test binary, build with `go test -c`
 *.test
