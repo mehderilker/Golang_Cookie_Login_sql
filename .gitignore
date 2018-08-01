@@ -1,6 +1,12 @@
 # Golang.gitignore
 vendor/
 
+*
+!/**/
+src/golang.org
+!*.go
+!.gitignore
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
