@@ -1,0 +1,64 @@
+{{define "Photos"}}
+    {{template "headerIndex" .  }}
+
+    <div style="padding: 15px">
+        <table class="uk-table uk-table-hover">
+            <thread>
+                <tr>
+                    <td>
+                        Resim
+                    </td>
+                    <td>
+                        Dosya Adı
+                    </td>
+                    <td>
+                        Tarih
+                    </td>
+                    <td>
+                        Düzenle
+                    </td>
+                </tr>
+            </thread>
+            <tbody>
+            {{range $item := .PhotoList}}
+                <tr id="kayit_{{$item.ID}}">
+
+                    <td><img width="100px" height="100px" src="/public/pics/{{$item.Pname.String}}" alt=""></td>
+                    <td>{{$item.Pname.String}}</td>
+                    <td>{{$item.Datestr}}</td>
+                    <td><a class="uk-button uk-button-primary" href="/editpic/duzenle/{{$item.ID}}"  > Düzenle</a>
+                        <a class="uk-button uk-button-danger delete" id="Sil" data-id="{{$item.ID}}" > Sil</a></td>
+                </tr>
+                        {{end}}
+            </tbody>
+        </table>
+    </div>
+{{template "footerIndex" .}}
+    <script>
+        $(document).ready(function () {
+            $('.delete').click(function () {
+                var model = new Object();
+                model.ID =$(this).data("id");
+                if(confirm("Silmek istediğinizden Emin misiniz ?")) {
+                    $.ajax({
+                        type:"GET",
+                        url:"/editpic/delete",
+                        data:model,
+                        dataType:'json',
+                        success:function (r) {
+                            if(r.Status == true){
+                                $('#kayit_'+model.ID).fadeOut('2000')
+                            }else{
+                                alert(r.Message)
+                            }
+                        }
+                    });
+                }
+            })
+        })
+
+
+
+    </script>
+
+{{end}}

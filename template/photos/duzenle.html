@@ -1,0 +1,49 @@
+{{define "photoEdit"}}
+    {{template "headerIndex" .}}
+
+
+    <div style="padding: 100px">
+        <div>
+            <h1 style="text-align: center; padding-bottom: 25px">Düzenlenecek Resim</h1>
+            <div uk-grid>
+                <div class="uk-width-1-3@m">
+                    <img src="/public/pics/{{.PhotoInfo.Pname.String}}" width="500px" height="350px" alt="">
+                </div>
+                <div class="uk-width-1-3@m">
+                    <p> <b>Şuan Ki Yüksekliği : </b>{{.PhotoInfo.PhotoAttr.X}} </p>
+                    <hr>
+                    <p><b> Şuan Ki Genişliği : </b>{{.PhotoInfo.PhotoAttr.Y}}</p>
+                    <hr>
+                    <p><b> Şuan Ki Blur : </b>{{.PhotoInfo.PhotoAttr.Blur}}</p>
+                    <hr>
+                    <p><b> Şuan Ki Parlaklık : </b>{{.PhotoInfo.PhotoAttr.Brightness}}</p>
+                    <hr>
+                </div>
+                <div class="uk-width-1-3@m">
+                    <form method="post" enctype="multipart/vaform-data">
+                        <input type="hidden" name="ID" value="{{.PhotoInfo.ID}}">
+                        <input class="uk-input" type="text" name="heightEdit" placeholder="Yükseklik değeri px" required>
+                        <hr>
+                        <input class="uk-input" type="text" name="widthEdit"placeholder="Genişlik  değeri px" required><hr>
+                        <input class="uk-input" type="text" name="BlurEdit"placeholder="Blur  değeri " required><hr>
+                        <input class="uk-input" type="text" name="BrightnessEdit"placeholder="Parlaklık değeri " required><hr>
+                        <div style="padding-top:25px" class="uk-width-1-2">
+                            <button  class="uk-button uk-button-primary" type="submit"  >Güncelle</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+    <script>
+        $(location).attr('href', 'http://www.gencayyildiz.com')
+    </script>
+{{end}}

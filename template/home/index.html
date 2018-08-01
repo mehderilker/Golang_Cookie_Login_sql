@@ -1,0 +1,24 @@
+{{define "homeIndex"}}
+        {{template "headerIndex" .}}
+
+        <form method="POST" enctype="multipart/form-data">
+            <div style="text-align: center;padding: 100px" class="uk-margin" uk-margin>
+                <div style="border-style: dashed" uk-form-custom="target: true">
+                    <input type="file" name="nf">
+                    <input class="uk-input uk-form-width-large" type="text" placeholder="Resmi Seç" disabled>
+                </div>
+                <button class="uk-button uk-button-primary">Gönder</button>
+            </div>
+        </form>
+
+                <div style="text-align: center">
+                    <div class="uk-column-1-1">
+                    {{if eq .Status true}}
+                        <p>Fotoğraf Başarılı . Düzenlemek için <a href="/editpic">Tıklayınız.</a></p>
+                    {{end}}
+                    </div>
+
+                </div>
+
+
+{{end}}

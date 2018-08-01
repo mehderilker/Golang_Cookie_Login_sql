@@ -1,0 +1,38 @@
+{{define "headerIndex"}}
+
+<html>
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <link rel="stylesheet" href="/static/css/menu_2.css" />
+
+    <!-- UIkit JS -->
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/uikit-icons.min.js"></script>
+
+
+</head>
+<body>
+<header id="ust">
+    <a href="" id="logo"></a>
+
+    <nav id="ustmenu">
+        <ul> {{range $item := .Page.Category }}
+            <li><a href="/{{$item.Category}}">{{$item.Category}}</a></li>
+            {{end}}
+            <li style="margin:600px;">
+
+                {{if eq .Page.GirisYapmismi true}}
+                <a href="/cikis">Logout</a>
+                    {{else}}
+                    <a href="/login">Login</a>
+                        {{end}}
+            </li>
+        </ul>
+
+    </nav>
+</header>
+{{end}}
